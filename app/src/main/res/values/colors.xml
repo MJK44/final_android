@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!--<color name="link_color">#03A9F4</color>-->
+    <color name="google_red">#DB4437</color>
+    <color name="background_light">#FAFAFA</color>
+    <color name="background_dark">#121212</color>
+    <color name="hint_color">#B0B0B0</color> <!-- Light gray -->
+    <color name="background_pastel">#F8F9FA</color> <!-- Soft white-gray -->
+
+    <color name="background_brown">#D8C3B2</color> <!-- Soft brown for the background -->
+    <color name="text_dark_brown">#5E4633</color><!-- Dark brown for text -->
+    <color name="button_brown">#B69A80</color> <!-- Button background -->
+    <color name="accent_pink">#F3D3CE</color> <!-- Accent color for highlights -->
+    <color name="placeholder_gray">#EAE7E4</color> <!-- Light gray for inputs -->
+    <color name="link_color">#5E4633</color> <!-- Same as text but bold -->
+
+    <color name="hint_text_color">#5E4633</color> <!-- Dark Brown -->
+
+
+
+
+
+
+</resources>

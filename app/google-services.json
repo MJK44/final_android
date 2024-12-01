@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "157331824307",
+    "project_id": "petadoptionapp-e2aba",
+    "storage_bucket": "petadoptionapp-e2aba.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157331824307:android:554495dd183bf7cf985ac6",
+        "android_client_info": {
+          "package_name": "com.example.tonydoumit_androidmidterm_petapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157331824307-nje8caq6clduo5r9oepren72efrgbupt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tonydoumit_androidmidterm_petapp",
+            "certificate_hash": "ac4caad70cd22fdf53497384e2becae29cfc59be"
+          }
+        },
+        {
+          "client_id": "157331824307-50smdg98a9a1a0hom5a8cttqi2nra9kp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUObbxh4nHyuIfCgBqrucrYzlx6PIO8x0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157331824307-50smdg98a9a1a0hom5a8cttqi2nra9kp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
