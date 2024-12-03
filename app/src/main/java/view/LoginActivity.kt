@@ -43,14 +43,17 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Disable button to prevent multiple clicks
             loginButton.isEnabled = false
-            Toast.makeText(this, "Authenticating...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Authenticating online...", Toast.LENGTH_SHORT).show()
 
-            userViewModel.authenticateUser(email, password).observe(this, { isValid ->
+            // Attempt Firebase authentication
+            userViewModel.authenticateUser(email, password).observe(this, { isOnlineValid ->
                 loginButton.isEnabled = true
-                if (isValid) {
+                if (isOnlineValid) {
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, WelcomeActivity::class.java))
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
                     finish()
                 } else {
                     Toast.makeText(this, "Invalid credentials or network error", Toast.LENGTH_SHORT).show()
@@ -67,11 +70,6 @@ class LoginActivity : AppCompatActivity() {
         signUpLink.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
-
-        val editProfileLink = findViewById<TextView>(R.id.editProfileLink)
-        editProfileLink.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -83,8 +81,8 @@ class LoginActivity : AppCompatActivity() {
                 account?.let {
                     userViewModel.authenticateWithGoogle(it.idToken ?: "").observe(this, { isValid ->
                         if (isValid) {
-                            startActivity(Intent(this, WelcomeActivity::class.java))
-                            finish()
+                            Toast.makeText(this, "Google Sign-In successful", Toast.LENGTH_SHORT).show()
+                            navigateToWelcome()
                         } else {
                             Toast.makeText(this, "Google Sign-In failed", Toast.LENGTH_SHORT).show()
                         }
@@ -94,5 +92,15 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Google Sign-In failed: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun navigateToProfile() {
+        startActivity(Intent(this, ProfileActivity::class.java))
+        finish()
+    }
+
+    private fun navigateToWelcome() {
+        startActivity(Intent(this, WelcomeActivity::class.java))
+        finish()
     }
 }

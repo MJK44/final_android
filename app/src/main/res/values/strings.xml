@@ -38,5 +38,12 @@
     <string name="password_update_failed">Password update failed. Please try again later.</string>
     <string name="user_not_found">User not found. Please check the email address and try again.</string>
     <string name="editprofile">edit profile\n</string>
+    <string name="all_fields_required">All fields are required.</string>
+    <string name="password_updated">Password updated successfully.</string>
+    <string name="password_update_failed_firebase">Failed to update password in Firebase. Please try again later.</string>
+    <string name="user_not_authenticated">User is not authenticated. Please log in again.</string>
+    <string name="relogin_required">You need to log in again to update your password.</string>
+    <string name="current_password">Current Password</string>
+    <string name="cancel">Cancel\n</string>
 
 </resources>

@@ -11,11 +11,15 @@ interface UserDao {
     @Insert
     suspend fun insertUser(user:User) //Insert a new user into the database
 
-    @Query("SELECT * FROM users where email = :email AND hashedPassword = :hashedPassword")
-    suspend fun getUserByEmailAndPassword(email: String, hashedPassword: String) : User? //Retrieve useer by email and hashed password
+    @Query("SELECT * FROM users where email = :email")
+    suspend fun getUserByEmail(email: String) : User? //Retrieve user by email
 
-    @Update
+    @Query("UPDATE users SET hashedPassword = :hashedPassword WHERE id = :id")
     suspend fun updatePassword(id: Int, hashedPassword: String)
+
+    @Query("SELECT * FROM users")
+    suspend fun getAllUsers(): List<User>
+
 }
 //@Dao : Marks the interface as a Data Access Object
 //@Insert : Adds a new user to the database

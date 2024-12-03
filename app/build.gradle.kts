@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.tonydoumit_androidmidterm_petapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.tonydoumit_androidmidterm_petapp"

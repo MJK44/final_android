@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.example.tonydoumit_androidmidterm_petapp.R
 import viewmodel.UserViewModel
 
@@ -25,9 +26,10 @@ class SignUpActivity : AppCompatActivity() {
         val emailEditText = findViewById<EditText>(R.id.emailEditText)
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         val signUpButton = findViewById<Button>(R.id.signUpButton)
-        val loginLink = findViewById<TextView>(R.id.loginlink) // Reference to the "Already have an account" link
+        val loginLink = findViewById<TextView>(R.id.loginlink)
 
         val firebaseAuth = FirebaseAuth.getInstance()
+        val firestore = FirebaseFirestore.getInstance()
 
         signUpButton.setOnClickListener {
             val firstName = firstNameEditText.text.toString().trim()
@@ -47,13 +49,34 @@ class SignUpActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show()
 
-                        // Cache user locally (including hashed password)
-                        userViewModel.insertUser(email, firstName, lastName, password)
+                        // Get the user's Firebase UID
+                        val userId = firebaseAuth.currentUser?.uid ?: ""
 
-                        // Navigate to Welcome Activity
-                        val intent = Intent(this,WelcomeActivity::class.java)
-                        startActivity(intent)
-                        finish() // Close sign-up activity
+                        // Create user object for Firestore
+                        val userMap = hashMapOf(
+                            "id" to userId,
+                            "firstName" to firstName,
+                            "lastName" to lastName,
+                            "email" to email
+                        )
+
+                        // Save user to Firestore
+                        firestore.collection("users").document(userId)
+                            .set(userMap)
+                            .addOnSuccessListener {
+                                Toast.makeText(this, "User saved in Firestore", Toast.LENGTH_SHORT).show()
+
+                                // Cache user locally (including hashed password)
+                                userViewModel.insertUser(email, firstName, lastName, password)
+
+                                // Navigate to Welcome Activity
+                                val intent = Intent(this, WelcomeActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(this, "Failed to save user in Firestore: ${e.message}", Toast.LENGTH_SHORT).show()
+                            }
                     } else {
                         // Handle errors
                         val errorMessage = task.exception?.localizedMessage ?: "Sign-up failed"
@@ -66,7 +89,7 @@ class SignUpActivity : AppCompatActivity() {
         loginLink.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-            finish() // Close sign-up activity
+            finish()
         }
     }
 }
