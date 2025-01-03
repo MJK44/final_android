@@ -1,7 +1,10 @@
 package view
 
+
+
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -51,6 +54,10 @@ class ProfileActivity : AppCompatActivity() {
             val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        findViewById<View>(R.id.textViewChangePassword).setOnClickListener {
+            startActivity(Intent(this, ChangePasswordActivity::class.java))
         }
     }
 

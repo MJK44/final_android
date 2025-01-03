@@ -9,6 +9,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import model.AppDatabase
+import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import model.User
 import repository.UserRepository
 
@@ -16,9 +19,33 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: UserRepository
 
+    private val _firstName = MutableLiveData<String>()
+    val firstName: LiveData<String> = _firstName
+
     init {
         val userDao = AppDatabase.getDatabase(application).userDao()
         repository = UserRepository(userDao)
+    }
+
+    fun loadUserData() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            val db = FirebaseFirestore.getInstance()
+            db.collection("users").document(userId).get()
+                .addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        _firstName.value = document.getString("firstName") ?: "User"
+                    } else {
+                        _firstName.value = "User"
+                    }
+                }
+                .addOnFailureListener {
+                    _firstName.value = "Error"
+                }
+        } else {
+            _firstName.value = "User"
+        }
     }
 
     // Insert user into Room
@@ -62,11 +89,17 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     fun authenticateWithGoogle(idToken: String): LiveData<Boolean> {
         val result = MutableLiveData<Boolean>()
         viewModelScope.launch(Dispatchers.IO) {
-            val isValid = repository.authenticateWithGoogle(idToken)
-            result.postValue(isValid)
+            try {
+                val isValid = repository.authenticateWithGoogle(idToken)
+                result.postValue(isValid)
+            } catch (e: Exception) {
+                Log.e("UserViewModel", "Failed to authenticate with Google", e)
+                result.postValue(false)  // Post 'false' in case of exceptions
+            }
         }
         return result
     }
+
 
     // Get Google Sign-In options
     fun getGoogleSignInOptions(): GoogleSignInOptions {

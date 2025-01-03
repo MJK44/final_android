@@ -69,15 +69,14 @@ class UserRepository(private val userDao: UserDao) {
             val credential = GoogleAuthProvider.getCredential(idToken, null)
             firebaseAuth.signInWithCredential(credential).await()
 
-            val user = firebaseAuth.currentUser
-            if (user != null) {
-                val email = user.email ?: return false
+            firebaseAuth.currentUser?.let { user ->
+                val email = user.email ?: return false // Fails if email is null
                 val displayName = user.displayName ?: ""
                 cacheUserLocally(email, displayName, "", "")
-            }
-            true
+                true
+            } ?: false
         } catch (e: Exception) {
-            Log.e("UserRepository", "Error authenticating with Google: ${e.localizedMessage}")
+            Log.e("UserRepository", "Error authenticating with Google: ${e.localizedMessage}", e)
             false
         }
     }

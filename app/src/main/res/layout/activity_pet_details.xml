@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBE6D3"
+    tools:context="view.PetDetailsActivity">
+
+    <ImageView
+        android:id="@+id/top_left_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/pet_love"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="350dp"
+        android:contentDescription="Decorative top-left image" />
+
+    <!-- Pet Image with Rounded Corners -->
+    <ImageView
+        android:id="@+id/pet_image"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:src="@drawable/placeholder_image"
+        android:background="@drawable/rounded_border_with_shadow"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintVertical_chainStyle="packed"
+    app:layout_constraintVertical_bias="0.35"
+    android:scaleType="centerCrop"
+    android:elevation="4dp"
+    android:padding="2dp"
+    app:srcCompat="@drawable/placeholder_image"
+    android:outlineProvider="bounds"
+    android:clipToOutline="true"
+    android:layout_marginBottom="16dp" />
+
+    <!-- Pet Name Styled -->
+    <TextView
+        android:id="@+id/pet_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pet Name"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/pet_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Pet Breed Styled -->
+    <TextView
+        android:id="@+id/pet_breed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Breed"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/pet_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Adopt Me Button with Rounded Corners -->
+    <Button
+        android:id="@+id/adopt_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Adopt Me"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_button2"
+        app:layout_constraintTop_toBottomOf="@id/pet_breed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <!-- Pet Location Styled -->
+    <TextView
+        android:id="@+id/pet_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/adopt_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <ImageView
+        android:id="@+id/bottom_left_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/play_with_pet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="14dp"
+        android:contentDescription="Decorative bottom-left image" />
+
+    <ImageView
+        android:id="@+id/bottom_right_image"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@drawable/dogs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="110dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Decorative bottom-right image" />
+
+    <ImageView
+        android:id="@+id/center_right_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/shiba_inu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginTop="370dp"
+        android:contentDescription="Decorative center-right image" />
+
+    <ImageView
+        android:id="@+id/center_left_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/scratch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="5dp"
+        android:contentDescription="Decorative center-left image" />
+
+    <ImageView
+        android:id="@+id/top_left_pet_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/pet"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="Decorative top-left image" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,14 @@
 package view
 
+
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tonydoumit_androidmidterm_petapp.R
@@ -52,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
                 loginButton.isEnabled = true
                 if (isOnlineValid) {
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, ProfileActivity::class.java)
+                    val intent = Intent(this, WelcomeActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
@@ -78,8 +81,9 @@ class LoginActivity : AppCompatActivity() {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                account?.let {
-                    userViewModel.authenticateWithGoogle(it.idToken ?: "").observe(this, { isValid ->
+                // Handle account retrieved from Google Sign-In
+                account?.idToken?.let { token ->
+                    userViewModel.authenticateWithGoogle(token).observe(this, { isValid ->
                         if (isValid) {
                             Toast.makeText(this, "Google Sign-In successful", Toast.LENGTH_SHORT).show()
                             navigateToWelcome()
@@ -87,9 +91,10 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(this, "Google Sign-In failed", Toast.LENGTH_SHORT).show()
                         }
                     })
-                }
+                } ?: Toast.makeText(this, "Google Sign-In failed: Invalid token", Toast.LENGTH_SHORT).show()
             } catch (e: ApiException) {
-                Toast.makeText(this, "Google Sign-In failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Google Sign-In failed with code ${e.statusCode}: ${e.message}", Toast.LENGTH_LONG).show()
+                Log.e("LoginActivity", "Sign in failed with exception: ${e.statusCode}")
             }
         }
     }

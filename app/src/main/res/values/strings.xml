@@ -45,5 +45,24 @@
     <string name="relogin_required">You need to log in again to update your password.</string>
     <string name="current_password">Current Password</string>
     <string name="cancel">Cancel\n</string>
-
+    <string name="dog_icon">dog\n</string>
+    <string name="pet_name">Pet Name</string>
+    <string name="species_breed">Species, Breed</string>
+    <string name="cats">Cats</string>
+    <string name="parrot">Parrot</string>
+    <string name="rabbit">Rabbit</string>
+    <string name="welcome_firstname">Welcome</string>
+    <string name="welcome_message">Hello, %1$s</string>
+    <string name="search_pet_to_adopt">Search pet to adopt</string>
+    <string name="location">location\n</string>
+    <string name="favorite">favorite\n</string>
+    <string name="dogs">dogs\n</string>
+    <string name="rabbits">rabbits\n</string>
+    <string name="illustration_description">illustration description</string>
+    <string name="profile_icon">Profile Icon</string>
+    <string name="pet_age">pet_age</string>
+    <string name="pet_breed">pet_breed</string>
+    <string name="pet_location">pet_location</string>
+    <string name="pet_description">pet_description</string>
+    <string name="pet_type">pet_type</string>
 </resources>

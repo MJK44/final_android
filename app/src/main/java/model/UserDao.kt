@@ -19,7 +19,6 @@ interface UserDao {
 
     @Query("SELECT * FROM users")
     suspend fun getAllUsers(): List<User>
-
 }
 //@Dao : Marks the interface as a Data Access Object
 //@Insert : Adds a new user to the database

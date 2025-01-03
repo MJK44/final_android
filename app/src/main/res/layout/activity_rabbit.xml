@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBE6D3">
+
+    <!-- Welcome Message -->
+    <TextView
+        android:id="@+id/welcome_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Rabbit Listings!"
+        android:textSize="18sp"
+        android:textColor="#5D4037"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/profile_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/profile_user"
+        android:contentDescription="@string/profile_icon"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Search Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/search_container"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/search_bar_background"
+        app:layout_constraintTop_toBottomOf="@id/welcome_message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/search_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp"/>
+
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="@string/search_pet_to_adopt"
+            android:background="@android:color/transparent"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp"
+            android:textColorHint="#7E6D63"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/search_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Pet Type Icons with adjusted margins -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pet_type_icons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/search_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Icon and description for Dog -->
+        <ImageView
+            android:id="@+id/icon_dog"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_dog"
+            android:background="@drawable/icon_border"
+            android:contentDescription="@string/dogs"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dog_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dogs"
+            app:layout_constraintTop_toBottomOf="@id/icon_dog"
+            app:layout_constraintStart_toStartOf="@id/icon_dog"
+            app:layout_constraintEnd_toEndOf="@id/icon_dog" />
+
+        <!-- Icon and description for Cat -->
+        <ImageView
+            android:id="@+id/icon_cat"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_cat"
+            android:contentDescription="Cats"
+            android:background="@drawable/icon_border"
+            android:padding="8dp"
+            app:layout_constraintStart_toEndOf="@id/icon_dog"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="48dp" />
+
+        <TextView
+            android:id="@+id/cat_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cats"
+            app:layout_constraintTop_toBottomOf="@id/icon_cat"
+            app:layout_constraintStart_toStartOf="@id/icon_cat"
+            app:layout_constraintEnd_toEndOf="@id/icon_cat" />
+
+        <!-- Icon and description for Horse -->
+        <ImageView
+            android:id="@+id/icon_horse"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_horse"
+            android:contentDescription="Horses"
+            android:background="@drawable/icon_border"
+            android:padding="8dp"
+            app:layout_constraintStart_toEndOf="@id/icon_cat"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="48dp" />
+
+        <TextView
+            android:id="@+id/horse_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horses"
+            app:layout_constraintTop_toBottomOf="@id/icon_horse"
+            app:layout_constraintStart_toStartOf="@id/icon_horse"
+            app:layout_constraintEnd_toEndOf="@id/icon_horse" />
+
+        <!-- New Icon -->
+        <ImageView
+            android:id="@+id/icon_others"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/man"
+            android:contentDescription="New Icon"
+            android:background="@drawable/icon_border"
+            android:padding="8dp"
+            app:layout_constraintStart_toEndOf="@id/icon_horse"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="48dp" />
+
+        <TextView
+            android:id="@+id/new_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other's Pet"
+            app:layout_constraintTop_toBottomOf="@id/icon_others"
+            app:layout_constraintStart_toStartOf="@id/icon_others"
+            app:layout_constraintEnd_toEndOf="@id/icon_others" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- RecyclerView for displaying rabbits -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rabbit_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toBottomOf="@id/pet_type_icons"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_rabbit" />
+</androidx.constraintlayout.widget.ConstraintLayout>

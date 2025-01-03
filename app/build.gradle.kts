@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -9,6 +11,7 @@ android {
     namespace = "com.example.tonydoumit_androidmidterm_petapp"
     compileSdk = 35
 
+    
     defaultConfig {
         applicationId = "com.example.tonydoumit_androidmidterm_petapp"
         minSdk = 24
@@ -74,5 +77,18 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
     implementation(libs.firebase.firestore.ktx)
+
+    implementation(libs.picasso)
+
+    implementation(libs.firebase.storage.ktx)
+
+    implementation(libs.retrofit)
+
+    implementation(libs.converter.gson)
+
+    implementation(libs.firebase.firestore)
+
+    implementation(libs.firebase.bom)
+
 }
 apply(plugin = "com.google.gms.google-services")

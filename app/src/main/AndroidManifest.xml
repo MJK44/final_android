@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,17 +15,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TonyDoumit_AndroidMidterm_PetApp"
         tools:targetApi="31">
-
-        <!-- Activities -->
+        <activity
+            android:name="view.AddedPetListActivity"
+            android:exported="false" />
+        <activity
+            android:name="view.AddPetActivity"
+            android:exported="false" />
+        <activity
+            android:name="view.PetDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name="view.RabbitActivity"
+            android:exported="false" />
+        <activity
+            android:name="view.HorseActivity"
+            android:exported="false" />
+        <activity
+            android:name="view.CatActivity"
+            android:exported="false" />
+        <activity
+            android:name="view.DogActivity"
+            android:exported="false" /> <!-- Activities -->
         <activity
             android:name="view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="view.ChangePasswordActivity"
             android:exported="false" />
