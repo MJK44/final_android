@@ -19,8 +19,9 @@
   <p>Follow these steps to install and run the Pet Adoption App on your Android device:</p>
   <ol>
     <li>Ensure your device or emulator is set up with Android OS that supports the app.</li>
-    <li>Download and install the app from the app store or through direct APK files as provided.</li>
-    <li>Open the app and register or log in to access its features.</li>
+    <li>Clone or download the project files from this repository to your local machine.</li>
+    <li>Open the project in Android Studio.</li>
+     <li>Build and run the application on your device or emulator.</li>
   </ol>
   
   <h2>Usage</h2>
